@@ -1,3 +1,3 @@
 # just-a-depo
 
-ömer deposu
+ömer faruk yücel
