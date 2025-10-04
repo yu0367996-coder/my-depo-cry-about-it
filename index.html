@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TekstilAtıkModa — Ağ & Kaynak Merkezi (HTML)</title>
+  <meta name="description" content="Tekstil atıkları, bağışların yolculuğu, pamuk su ayak izi ve sürdürülebilir moda için bağlantı ağı ve kaynak merkezi." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root{ --green-700:#047857; --muted:#6b7280; }
+    html,body{height:100%;}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#f2fdf6 0%, #ffffff 60%); color:#0f172a;}
+    header{backdrop-filter: blur(6px); background: rgba(255,255,255,0.88); border-bottom:1px solid rgba(4,120,87,0.06);}    
+
+    .section{ opacity:0; transform: translateY(14px) scale(.997); transition: opacity .36s cubic-bezier(.2,.9,.3,1), transform .36s cubic-bezier(.2,.9,.3,1); display:none; }
+    .section.active{ display:block; opacity:1; transform: translateY(0) scale(1); }
+
+    .card{ background:#fff; border-radius:14px; padding:18px; box-shadow:0 8px 28px rgba(6,95,70,0.04); border:1px solid rgba(6,95,70,0.04); transition: transform .32s, box-shadow .32s; }
+    .card:hover{ transform: translateY(-8px) scale(1.01); box-shadow:0 22px 44px rgba(6,95,70,0.06); }
+
+    .img-item{ overflow:hidden; border-radius:10px; transition: transform .28s ease, filter .28s ease; cursor:pointer }
+    .img-item img{ display:block; width:100%; height:160px; object-fit:cover; }
+    .img-item:hover{ transform: translateY(-6px) scale(1.03); filter: saturate(1.06) contrast(1.02); }
+
+    .stat{ text-align:center; padding:18px; }
+    .small{ font-size:.9rem; color:var(--muted); }
+
+    .btn{ background:linear-gradient(180deg,var(--green-700),#03543f); color:white; padding:.6rem 1rem; border-radius:10px; border:none; cursor:pointer; }
+    .btn:active{ transform: translateY(1px); }
+
+    footer{background:transparent}
+    main{ padding-top:22px; }
+
+    .page-transition { animation: fadeInUp 0.5s ease both; }
+    @keyframes fadeInUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header class="sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center gap-4">
+        <h1 class="text-2xl font-extrabold text-green-800">TekstilAtıkModa</h1>
+        <span class="text-sm text-gray-600">Ağ · Kaynak · Eylem</span>
+      </div>
+      <nav class="flex items-center gap-2" aria-label="Ana navigasyon">
+        <button class="px-3 py-2 rounded-md hover:bg-green-50" data-target="home">Ana Sayfa</button>
+        <button class="px-3 py-2 rounded-md hover:bg-green-50" data-target="network">Ağ</button>
+        <button class="px-3 py-2 rounded-md hover:bg-green-50" data-target="articles">Makaleler</button>
+        <button class="px-3 py-2 rounded-md hover:bg-green-50" data-target="gallery">Galeri</button>
+        <button class="px-3 py-2 rounded-md hover:bg-green-50" data-target="stats">İstatistikler</button>
+        <button class="px-3 py-2 rounded-md hover:bg-green-50" data-target="links">Kaynaklar</button>
+        <button class="px-3 py-2 rounded-md bg-green-600 text-white" data-target="auth">Üye Ol / Giriş</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <section id="home" class="section">
+      <h2 class="text-3xl font-bold mb-4">Hoşgeldiniz</h2>
+      <p class="mb-6">Tekstil atıkları, bağışların yolculuğu, pamuk üretiminde su kullanımı ve sürdürülebilir moda üzerine kapsamlı bilgi merkezi.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card">
+          <h3 class="font-bold mb-2">Gambiya'ya Gönderilen 13M Kıyafet</h3>
+          <p>Kıyafet bağışları ayrıştırılamadığı için tonlarca atık oluşuyor.</p>
+        </div>
+        <div class="card">
+          <h3 class="font-bold mb-2">Pamuk ve Su</h3>
+          <p>1 tişört üretmek için yaklaşık 2700 litre su gerekir.</p>
+        </div>
+        <div class="card">
+          <h3 class="font-bold mb-2">Daha İyi Gelecek</h3>
+          <p>Moda endüstrisinin çevreye etkilerini azaltmak için çözümler üretiyoruz.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="network" class="section">
+      <h2 class="text-3xl font-bold mb-4">Ağ</h2>
+      <p>Sivil toplum kuruluşları, bağış merkezleri ve araştırma kurumlarının bağlantı ağı.</p>
+      <ul class="list-disc ml-6 mt-4">
+        <li><a href="https://www.fashionrevolution.org/" target="_blank" class="text-green-700 underline">Fashion Revolution</a></li>
+        <li><a href="https://www.vogue.com/" target="_blank" class="text-green-700 underline">Vogue</a></li>
+        <li><a href="https://www.nytimes.com/section/style/fashion" target="_blank" class="text-green-700 underline">NY Times Fashion</a></li>
+      </ul>
+    </section>
+
+    <section id="articles" class="section">
+      <h2 class="text-3xl font-bold mb-4">Makaleler</h2>
+      <article class="card mb-4">
+        <h3 class="font-bold mb-2">Tekstil Atıklarının Küresel Etkisi</h3>
+        <p>Küresel tekstil atıkları yıllık 92 milyon tondan fazladır. Çoğu çöplüklere ve gelişmekte olan ülkelere gönderilir.</p>
+        <p class="mt-2 text-sm text-gray-600">Tekstil atıkları yalnızca çevreyi kirletmekle kalmaz, aynı zamanda su kaynaklarını ve biyolojik çeşitliliği de tehdit eder. Bu durum, sürdürülebilir üretim ve tüketim alışkanlıklarının önemini artırıyor.</p>
+      </article>
+      <article class="card mb-4">
+        <h3 class="font-bold mb-2">Bağışların Yolculuğu</h3>
+        <p>Bağışlanan kıyafetlerin yalnızca %20’si mağazalarda satılır, geri kalanları ihraç edilir veya atılır.</p>
+        <p class="mt-2 text-sm text-gray-600">İhraç edilen kıyafetler çoğu zaman gelişmekte olan ülkelere gönderilir. Burada yerel tekstil pazarını olumsuz etkileyebilir ve yeni atık dağlarının oluşmasına neden olabilir.</p>
+      </article>
+      <article class="card">
+        <h3 class="font-bold mb-2">Sürdürülebilir Moda Çözümleri</h3>
+        <p>Moda sektörü geri dönüşüm, döngüsel ekonomi ve yavaş moda gibi çözümlerle dönüşüm geçiriyor.</p>
+        <p class="mt-2 text-sm text-gray-600">Markalar artık daha şeffaf üretim zincirleri oluşturuyor, tüketiciler ise bilinçli seçimler yaparak daha uzun ömürlü kıyafetleri tercih ediyor. Bu değişim, karbon ayak izini ve atık miktarını azaltmada önemli rol oynuyor.</p>
+      </article>
+    </section>
+
+    <section id="gallery" class="section">
+      <h2 class="text-3xl font-bold mb-4">Galeri</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="img-item"><img src="https://source.unsplash.com/400x300/?fashion,sustainability" alt="Moda 1"/></div>
+        <div class="img-item"><img src="https://source.unsplash.com/400x300/?clothes,recycle" alt="Moda 2"/></div>
+        <div class="img-item"><img src="https://source.unsplash.com/400x300/?cotton,field" alt="Pamuk"/></div>
+      </div>
+    </section>
+
+    <section id="stats" class="section">
+      <h2 class="text-3xl font-bold mb-4">İstatistikler</h2>
+      <canvas id="chart" width="400" height="200"></canvas>
+    </section>
+
+    <section id="links" class="section">
+      <h2 class="text-3xl font-bold mb-4">Kaynaklar</h2>
+      <ul class="list-disc ml-6">
+        <li><a href="https://waterfootprint.org/" target="_blank" class="text-green-700 underline">Water Footprint Network</a></li>
+        <li><a href="https://ellenmacarthurfoundation.org/" target="_blank" class="text-green-700 underline">Ellen MacArthur Foundation</a></li>
+        <li><a href="https://www.wrap.org.uk/" target="_blank" class="text-green-700 underline">WRAP UK</a></li>
+      </ul>
+    </section>
+
+    <section id="auth" class="section">
+      <h2 class="text-3xl font-bold mb-4">Üye Ol / Giriş</h2>
+      <form class="card grid gap-4 max-w-md">
+        <input type="text" placeholder="Kullanıcı adı" class="border p-2 rounded"/>
+        <input type="password" placeholder="Şifre" class="border p-2 rounded"/>
+        <button type="submit" class="btn">Giriş Yap</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="mt-12 py-8 text-center text-sm text-gray-600">© 2025 TekstilAtıkModa — Bilgi, farkındalık ve eylem.</footer>
+
+  <script>
+    (function(){
+      const qs = s => document.querySelector(s);
+      const qsa = s => Array.from(document.querySelectorAll(s));
+
+      const sections = qsa('.section');
+      function showSection(id){
+        sections.forEach(s => s.classList.remove('active','page-transition'));
+        const target = document.getElementById(id);
+        if(target){
+          target.classList.add('active','page-transition');
+          window.scrollTo({top:0,behavior:'smooth'});
+        }
+        if(id === 'stats') initChart();
+      }
+      qsa('header [data-target]').forEach(btn => btn.addEventListener('click', ()=> showSection(btn.dataset.target)));
+
+      showSection(location.hash.replace('#','') || 'home');
+
+      function initChart(){
+        const ctx = document.getElementById('chart');
+        if(!ctx.dataset.done){
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Tekstil Atıkları (M ton)','Pamuk Su Ayak İzi (Litre)','Bağışların % Satışı'],
+              datasets: [{
+                label: 'Veriler',
+                data: [92, 2700, 20],
+                backgroundColor: ['#047857','#059669','#10b981']
+              }]
+            },
+            options: {responsive:true, scales:{y:{beginAtZero:true}}}
+          });
+          ctx.dataset.done = true;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
