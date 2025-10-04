@@ -1,2 +1,3 @@
-# my-depo-cry-about-it
+# just-a-depo
+
 ömer deposu
